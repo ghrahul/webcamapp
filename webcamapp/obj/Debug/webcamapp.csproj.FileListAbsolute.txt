@@ -23,10 +23,10 @@ C:\Users\rahul\Desktop\My projects\webcamapp\webcamapp\bin\Debug\AForge.dll
 C:\Users\rahul\Desktop\My projects\webcamapp\webcamapp\bin\Debug\AForge.Video.xml
 C:\Users\rahul\Desktop\My projects\webcamapp\webcamapp\bin\Debug\AForge.Video.DirectShow.xml
 C:\Users\rahul\Desktop\My projects\webcamapp\webcamapp\bin\Debug\AForge.xml
-C:\Users\rahul\Desktop\My projects\webcamapp\webcamapp\obj\Debug\webcamapp.Form1.resources
 C:\Users\rahul\Desktop\My projects\webcamapp\webcamapp\obj\Debug\webcamapp.Properties.Resources.resources
 C:\Users\rahul\Desktop\My projects\webcamapp\webcamapp\obj\Debug\webcamapp.csproj.GenerateResource.Cache
 C:\Users\rahul\Desktop\My projects\webcamapp\webcamapp\obj\Debug\webcamapp.csproj.CoreCompileInputs.cache
 C:\Users\rahul\Desktop\My projects\webcamapp\webcamapp\obj\Debug\webcamapp.exe
 C:\Users\rahul\Desktop\My projects\webcamapp\webcamapp\obj\Debug\webcamapp.pdb
 C:\Users\rahul\Desktop\My projects\webcamapp\webcamapp\obj\Debug\webcamapp.csprojResolveAssemblyReference.cache
+C:\Users\rahul\Desktop\My projects\webcamapp\webcamapp\obj\Debug\webcamapp.Scan.resources
