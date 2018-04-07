@@ -23,6 +23,7 @@ namespace webcamapp
         private VideoCaptureDevice FinalVideo;
         private VideoCaptureDevice FinalVideo1;
         int stop = 0; int j = 1;
+        int interval=2000;
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
@@ -57,7 +58,7 @@ namespace webcamapp
             stop = 0;
             autoClick1();//first page
             textBox1.Visible = false;
-            await System.Threading.Tasks.Task.Delay(2000);
+            await System.Threading.Tasks.Task.Delay(interval);
             autoClick();//camera auto
         }
         void FinalVideo_NewFrame(object sender, NewFrameEventArgs eventArgs)
@@ -93,7 +94,7 @@ namespace webcamapp
                 pictureBox2.Image.Save(path + j.ToString() + ".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
                 j++;
                 textBox1.Visible = false;
-                await System.Threading.Tasks.Task.Delay(2000);
+                await System.Threading.Tasks.Task.Delay(interval);
             }
         }  
         private void autoClick1()//first_page
@@ -147,5 +148,19 @@ namespace webcamapp
         {
 
         }
+
+        private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int x;
+            String S = comboBox3.Text;
+            int.TryParse(S,out x);
+            interval = x * 1000;
+           
+
+        }  
+
+
+        
+        
     }
 }
