@@ -195,6 +195,7 @@
             this.label1.Size = new System.Drawing.Size(107, 20);
             this.label1.TabIndex = 16;
             this.label1.Text = "Time Interval: ";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label3
             // 

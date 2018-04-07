@@ -17,6 +17,8 @@ namespace webcamapp
             button1.Visible = false;
             button3.Visible = false;
             button4.Visible = false;
+            label1.Visible = false;
+            comboBox3.Visible = false;
         }
 
         private FilterInfoCollection VideoCaptureDevices;
@@ -125,6 +127,8 @@ namespace webcamapp
             button1.Visible = false;
             button3.Visible = false;
             button4.Visible = true;
+            label1.Visible = false;
+            comboBox3.Visible = false;
         }
 
         private void radioButton2_Click(object sender, EventArgs e)
@@ -132,6 +136,8 @@ namespace webcamapp
             button1.Visible = true;
             button3.Visible = true ;
             button4.Visible = false;
+            label1.Visible = true;
+            comboBox3.Visible = true;
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -157,10 +163,11 @@ namespace webcamapp
             interval = x * 1000;
            
 
-        }  
+        }
 
+        private void label1_Click(object sender, EventArgs e)
+        {
 
-        
-        
+        }
     }
 }
