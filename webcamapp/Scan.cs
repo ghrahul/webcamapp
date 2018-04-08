@@ -10,7 +10,7 @@ namespace webcamapp
 {
     public partial class Scan : Form
     {
-        public string path = @"F:\picture\";
+        public string path;
         public Scan()
         {
             InitializeComponent();
@@ -19,6 +19,10 @@ namespace webcamapp
             button4.Visible = false;
             label1.Visible = false;
             comboBox3.Visible = false;
+            label10.Visible = false;
+            label11.Visible = false;
+            radioButton1.Visible = false;
+            radioButton2.Visible = false;
         }
 
         private FilterInfoCollection VideoCaptureDevices;
@@ -45,13 +49,23 @@ namespace webcamapp
 
             //CAMERA 1
             FinalVideo = new VideoCaptureDevice(VideoCaptureDevices[comboBox1.SelectedIndex].MonikerString);
-            FinalVideo.NewFrame += new NewFrameEventHandler(FinalVideo_NewFrame);
-            FinalVideo.Start();
 
             //CAMERA 2
             FinalVideo1 = new VideoCaptureDevice(VideoCaptureDevices[comboBox2.SelectedIndex].MonikerString);
-            FinalVideo1.NewFrame += new NewFrameEventHandler(FinalVideo1_NewFrame);
-            FinalVideo1.Start();
+
+            for (int i = 0; i < FinalVideo.VideoCapabilities.Length; i++)
+            {
+                string resolution_size = FinalVideo.VideoCapabilities[i].FrameSize.ToString();
+                comboBox4.Items.Add(resolution_size);
+            }
+            //CAMERA 1
+
+            for (int i = 0; i < FinalVideo1.VideoCapabilities.Length; i++)
+            {
+                string resolution_size = FinalVideo1.VideoCapabilities[i].FrameSize.ToString();
+                comboBox5.Items.Add(resolution_size);
+            }
+            //CAMERA 2
         }
         private async void button1_Click(object sender, EventArgs e)
         {
@@ -77,10 +91,6 @@ namespace webcamapp
         }
         private void button3_Click(object sender, EventArgs e)
         {
-            if (FinalVideo.IsRunning == true)
-                FinalVideo.SignalToStop();
-            if (FinalVideo1.IsRunning == true)
-                FinalVideo1.SignalToStop();
             stop = 1;
             autoClick2();//last page
         }
@@ -116,12 +126,12 @@ namespace webcamapp
         {
             textBox1.Visible = true;
             pictureBox1.Image.Save(path + j.ToString() + ".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
+            //Console.WriteLine("PATH: " + path);
             j++;
             pictureBox2.Image.Save(path + j.ToString() + ".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
             j++;
             textBox1.Visible = false;
         }
-
         private void radioButton1_Click(object sender, EventArgs e)
         {
             button1.Visible = false;
@@ -150,23 +160,60 @@ namespace webcamapp
             }
         }
 
-        private void radioButton1_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
         {
             int x;
             String S = comboBox3.Text;
             int.TryParse(S,out x);
             interval = x * 1000;
-           
-
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void comboBox4_SelectedIndexChanged(object sender, EventArgs e)
+        {          
+            FinalVideo.VideoResolution = FinalVideo.VideoCapabilities[comboBox4.SelectedIndex];
+            FinalVideo.NewFrame += new NewFrameEventHandler(FinalVideo_NewFrame);
+            label9.Visible = false;
+            FinalVideo.Start();
+            comboBox4.Visible = false;
+            label10.Text = comboBox4.SelectedItem.ToString();
+            label10.Visible = true;
+            if(label10.Visible == true && label11.Visible == true)
+            {
+                radioButton1.Visible = true;
+                radioButton2.Visible = true;
+            }
+            
+        }//CAMERA 1
+
+        private void comboBox5_SelectedIndexChanged(object sender, EventArgs e)
         {
+            FinalVideo1.VideoResolution = FinalVideo1.VideoCapabilities[comboBox5.SelectedIndex];
+            FinalVideo1.NewFrame += new NewFrameEventHandler(FinalVideo1_NewFrame);
+            label8.Visible = false;
+            FinalVideo1.Start();
+            comboBox5.Visible = false;
+            label11.Text = comboBox5.SelectedItem.ToString();
+            label11.Visible = true;
+            if (label10.Visible == true && label11.Visible == true)
+            {
+                radioButton1.Visible = true;
+                radioButton2.Visible = true;
+            }
+        }//CAMERA 2
+
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            base.OnFormClosing(e);
+
+            if (e.CloseReason == CloseReason.WindowsShutDown) return;
+
+            
+            if (FinalVideo.IsRunning == true)
+                FinalVideo.SignalToStop();
+            if (FinalVideo1.IsRunning == true)
+                FinalVideo1.SignalToStop();
+            
+            
 
         }
     }
