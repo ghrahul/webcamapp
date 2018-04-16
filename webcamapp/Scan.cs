@@ -45,6 +45,7 @@ namespace webcamapp
             }
             comboBox1.SelectedIndex = 0;
             comboBox2.SelectedIndex = 1;
+            comboBox3.SelectedIndex = 0;
             textBox1.Visible = false;
 
             //CAMERA 1
@@ -70,9 +71,8 @@ namespace webcamapp
         private async void button1_Click(object sender, EventArgs e)
         {
             textBox1.Visible = false;
-            await System.Threading.Tasks.Task.Delay(5000);
+            await System.Threading.Tasks.Task.Delay(interval);
             stop = 0;
-            autoClick1();//first page
             textBox1.Visible = false;
             await System.Threading.Tasks.Task.Delay(interval);
             autoClick();//camera auto
@@ -92,7 +92,6 @@ namespace webcamapp
         private void button3_Click(object sender, EventArgs e)
         {
             stop = 1;
-            autoClick2();//last page
         }
         private async void autoClick()
         {
@@ -109,18 +108,6 @@ namespace webcamapp
                 await System.Threading.Tasks.Task.Delay(interval);
             }
         }  
-        private void autoClick1()//first_page
-        {
-            textBox1.Visible = true;
-            pictureBox2.Image.Save(path + j.ToString() + ".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
-            j++;
-        }
-        private void autoClick2()//last_page
-        {
-            textBox1.Visible = true;
-            pictureBox1.Image.Save(path + j.ToString() + ".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
-            j++;
-        }
 
         private void button4_Click(object sender, EventArgs e)
         {
@@ -157,6 +144,8 @@ namespace webcamapp
             {
                 path = folderBrowserDialog1.SelectedPath + "\\";
                 label3.Text = path;
+                label12.Text = path;
+                label13.Visible = false;
             }
         }
 
@@ -173,6 +162,8 @@ namespace webcamapp
             FinalVideo.VideoResolution = FinalVideo.VideoCapabilities[comboBox4.SelectedIndex];
             FinalVideo.NewFrame += new NewFrameEventHandler(FinalVideo_NewFrame);
             label9.Visible = false;
+            label3.Visible = false;
+            label13.Visible = false;
             FinalVideo.Start();
             comboBox4.Visible = false;
             label10.Text = comboBox4.SelectedItem.ToString();
@@ -190,6 +181,8 @@ namespace webcamapp
             FinalVideo1.VideoResolution = FinalVideo1.VideoCapabilities[comboBox5.SelectedIndex];
             FinalVideo1.NewFrame += new NewFrameEventHandler(FinalVideo1_NewFrame);
             label8.Visible = false;
+            label12.Visible = false;
+            label13.Visible = false;
             FinalVideo1.Start();
             comboBox5.Visible = false;
             label11.Text = comboBox5.SelectedItem.ToString();

@@ -30,3 +30,7 @@ C:\Users\rahul\Desktop\My projects\webcamapp\webcamapp\obj\Debug\webcamapp.pdb
 C:\Users\rahul\Desktop\My projects\webcamapp\webcamapp\obj\Debug\webcamapp.csprojResolveAssemblyReference.cache
 C:\Users\rahul\Desktop\My projects\webcamapp\webcamapp\obj\Debug\webcamapp.Scan.resources
 C:\Users\rahul\Desktop\webcamapp\webcamapp\obj\Debug\webcamapp.Scan.resources
+C:\Users\rahul\Desktop\webcamapp\webcamapp\bin\Debug\webcamapp.exe.manifest
+C:\Users\rahul\Desktop\webcamapp\webcamapp\bin\Debug\webcamapp.application
+C:\Users\rahul\Desktop\webcamapp\webcamapp\obj\Debug\webcamapp.exe.manifest
+C:\Users\rahul\Desktop\webcamapp\webcamapp\obj\Debug\webcamapp.application
